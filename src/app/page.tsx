@@ -11,7 +11,13 @@ export default function HomePage() {
         </p>
         <div className="flex gap-4">
           <a
-            href="/app"
+            href="/signin"
+            className="rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
+          >
+            Sign In
+          </a>
+          <a
+            href="/signup"
             className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
           >
             Get Started
