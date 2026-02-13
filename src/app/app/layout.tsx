@@ -28,6 +28,12 @@ export default async function AppLayout({
           </a>
           <div className="flex items-center gap-4">
             <a
+              href="/app/settings"
+              className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+            >
+              Settings
+            </a>
+            <a
               href="/app/billing"
               className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             >

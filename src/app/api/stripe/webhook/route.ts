@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import Stripe from "stripe";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 /**
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
+    event = getStripe().webhooks.constructEvent(body, sig, webhookSecret);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
     console.error("Webhook signature verification failed:", message);
@@ -161,7 +161,7 @@ export async function POST(request: Request) {
           : subDetails.subscription.id;
 
       const subscription =
-        await stripe.subscriptions.retrieve(subscriptionId);
+        await getStripe().subscriptions.retrieve(subscriptionId);
 
       const customerId =
         typeof subscription.customer === "string"
