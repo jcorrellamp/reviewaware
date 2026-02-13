@@ -27,6 +27,12 @@ export default async function AppLayout({
             ReviewAware
           </a>
           <div className="flex items-center gap-4">
+            <a
+              href="/app/billing"
+              className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+            >
+              Billing
+            </a>
             <span className="text-sm text-zinc-600 dark:text-zinc-400">
               {user.email}
             </span>
