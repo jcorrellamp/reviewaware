@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { stripe, TOPUP_PACKS, isSubscriptionActive } from "@/lib/stripe";
+import { getStripe, TOPUP_PACKS, isSubscriptionActive } from "@/lib/stripe";
 
 /**
  * POST /api/stripe/topup
@@ -79,7 +79,7 @@ export async function POST(request: Request) {
 
   const baseUrl = process.env.APP_BASE_URL || "http://localhost:3000";
 
-  const session = await stripe.checkout.sessions.create({
+  const session = await getStripe().checkout.sessions.create({
     customer: account.stripe_customer_id,
     mode: "payment",
     line_items: [{ price: priceId, quantity: 1 }],
